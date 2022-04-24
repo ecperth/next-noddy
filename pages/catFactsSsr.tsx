@@ -1,3 +1,7 @@
+export interface Fact {
+    fact: string
+}
+
 export async function getServerSideProps() {
     const response = await fetch('https://catfact.ninja/fact').then((res) => res.json())
     return {
@@ -5,10 +9,10 @@ export async function getServerSideProps() {
     }
 }
 
-export default function catFact({ fact }) {
+export default function catFact(fact: Fact) {
   return (
     <>
-        <h2>{fact}</h2>
+        <h2>{fact.fact}</h2>
         <a href="/">back</a>
     </>)
 }
